@@ -52,9 +52,6 @@ INSERT INTO status (status)
 VALUES ('Active'), ('Inactive'), ('Suspended');
 
 INSERT INTO drivers (name, number, hire_date, license_type_id, status_id)
-VALUES ('John Doe', 'DRV123456', '2023-01-15', 1, 2);
-
-INSERT INTO drivers (name, number, hire_date, license_type_id, status_id)
 VALUES ('John Smith', 'DRV2024', '2023-05-15', 1, 2);
 
 INSERT INTO drivers_phones (number, driver_id)
@@ -65,6 +62,10 @@ VALUES ('Route 1', 1);
 
 INSERT INTO driver_routes (driver_id, route_id, vehicle_id)
 VALUES (1, 6, 1);
+
+INSERT INTO assistants (name, phone, document_type_id) VALUES 
+('Laura Taylor', '901-234-5678', 2),
+('Daniel Anderson', '012-345-6789', 1);
 
 INSERT INTO assistants_routes (route_id, assistant_id)
 VALUES (5, 1);
