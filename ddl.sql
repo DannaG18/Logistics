@@ -171,11 +171,13 @@ CREATE TABLE shippings(
     shippingdate TIMESTAMP,
     receiver_id INT (11),
     route_id INT (11),
+    branch_id INT (11),
     CONSTRAINT Pk_Id_shippings PRIMARY KEY (id),
     CONSTRAINT Fk_clientid_shippings FOREIGN KEY (client_id) REFERENCES clients(id),
     CONSTRAINT Fk_packageid_shippings FOREIGN KEY (package_id) REFERENCES packages(id),
     CONSTRAINT Fk_receiverid_shippings FOREIGN KEY (receiver_id) REFERENCES receivers(id),
-    CONSTRAINT Fk_routeid_shippings FOREIGN KEY (route_id) REFERENCES routes(id)
+    CONSTRAINT Fk_routeid_shippings FOREIGN KEY (route_id) REFERENCES routes(id),
+    CONSTRAINT Fk_branchid_shippings FOREIGN KEY (branch_id) REFERENCES branches(id)
 );
 
 CREATE TABLE drivers(
@@ -205,17 +207,19 @@ CREATE TABLE vehicles(
     last_inspection DATE,
     plate VARCHAR (20),
     model_id VARCHAR (30),
+    branch_id INT (11),
     CONSTRAINT pk_id_vehicles PRIMARY KEY (id),
-    CONSTRAINT fk_modelid_vehicles FOREIGN KEY (model_id) REFERENCES models (id)
+    CONSTRAINT fk_modelid_vehicles FOREIGN KEY (model_id) REFERENCES models (id),
+    CONSTRAINT fk_branchid_vehicles FOREIGN KEY (branch_id) REFERENCES branches (id)
 );
 
 
 CREATE TABLE driver_routes(
     driver_id INT (11),
     route_id INT (11),
-    vehicule_id INT(11),
+    vehicle_id INT(11),
     CONSTRAINT pk_id_driver_routes PRIMARY KEY (driver_id, route_id),
     CONSTRAINT fk_driverid_routes FOREIGN KEY (driver_id) REFERENCES drivers (id),
     CONSTRAINT fk_routesid_routes FOREIGN KEY (route_id) REFERENCES routes (id),
-    CONSTRAINT fk_vehiculeid_routes FOREIGN KEY (vehicule_id) REFERENCES vehicles (id)
+    CONSTRAINT fk_vehicleid_routes FOREIGN KEY (vehicle_id) REFERENCES vehicles (id)
 );
